@@ -14,7 +14,6 @@
       #text;
       #useComputedStyle;
       #timeout;
-      #previewTarget;
       #previewTargetScale;
       #video;
       #canvas;
@@ -49,8 +48,13 @@
         }
       }
 
-      connectedCallback() {
-        this.#previewTarget = document.querySelector(this.attributes.getNamedItem('preview-target')?.value);
+      /**
+       * DOM is not guaranteed to be fully loaded neither in constructor nor connectedCallback hence querying as late as
+       * possible is the easiest way.
+       * @returns {HTMLImageElement}
+       */
+      #previewTarget() {
+        return document.querySelector(this.attributes.getNamedItem('preview-target')?.value);
       }
 
       takeScreenshot() {
@@ -75,10 +79,11 @@
               });
 
               // Set image to target if defined
-              if (this.#previewTarget instanceof HTMLImageElement) {
-                this.#previewTarget.src = this.#canvas.toDataURL('image/png');
-                this.#previewTarget.width = this.#canvas.width * this.#previewTargetScale;
-                this.#previewTarget.height = this.#canvas.height * this.#previewTargetScale;
+              const previewTarget = this.#previewTarget();
+              if (previewTarget instanceof HTMLImageElement) {
+                previewTarget.src = this.#canvas.toDataURL('image/png');
+                previewTarget.width = this.#canvas.width * this.#previewTargetScale;
+                previewTarget.height = this.#canvas.height * this.#previewTargetScale;
               }
 
               // Clear video
