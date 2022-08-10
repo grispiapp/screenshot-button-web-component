@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script src="https://grispiapp.github.io/screenshot-button-web-component/screenshot-button.js"></script>
+  <script src="screenshot-button.js"></script>
   <meta charset="utf-8">
   <title>Screenshot Button Custom Element Web components</title>
   <style>
@@ -9,7 +9,9 @@
       font-family: sans-serif;
     }
     pre {
-      background-color:#ffffff;font-family:'JetBrains Mono',monospace;font-size:10.5pt;
+      background-color:#ffffff;
+      font-family:monospace;
+      font-size:10.5pt;
       color:#174ad4;
     }
     #docTable {
@@ -99,7 +101,7 @@
 </table>
 <h3>Demo</h3>
 <pre>
-  &lt;screenshot-button class="custom-button" style="color: magenta; padding: 5px;" use-computed-style preview-target=".prev" preview-scale="0.2"&gt;&lt;/screenshot-button&gt;
+  &lt;screenshot-button class="custom-button" style="color: magenta; padding: 5px;" use-computed-style="remove" preview-target=".prev" preview-scale="0.2"&gt;&lt;/screenshot-button&gt;
 
   .custom-button {
     background: #bababa;

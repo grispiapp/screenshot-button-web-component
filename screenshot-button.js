@@ -22,14 +22,16 @@
 
       constructor() {
         super();
+        this.attachShadow({ mode: 'open' }).innerHTML = htmlContent;
+      }
 
+      connectedCallback() {
         this.#text = this.attributes.getNamedItem('text')?.value || 'Take screenshot';
         this.#useComputedStyle = !!this.attributes.getNamedItem('use-computed-style');
         this.#removeAttributes = this.attributes.getNamedItem('use-computed-style')?.value?.trim().toLowerCase() === 'remove';
         this.#timeout = this.attributes.getNamedItem('timeout')?.value || '500';
         this.#previewTargetScale = this.attributes.getNamedItem('preview-scale')?.value || '0.5';
 
-        this.attachShadow({ mode: 'open' }).innerHTML = htmlContent;
         this.#video = this.shadowRoot.getElementById('video');
         this.#canvas = this.shadowRoot.getElementById('canvas');
         const startButton = this.shadowRoot.getElementById('startButton');
@@ -41,7 +43,6 @@
           Array.from(computedStyle).forEach(key => startButton.style.setProperty(key, computedStyle.getPropertyValue(key), computedStyle.getPropertyPriority(key)));
 
           if (this.#removeAttributes) {
-            this.removeAttribute('id');
             this.removeAttribute('class');
             this.removeAttribute('style');
           }
