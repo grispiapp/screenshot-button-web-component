@@ -5,6 +5,10 @@
   <meta charset="utf-8">
   <title>Screenshot Button Custom Element Web components</title>
   <style>
+    html, body {
+      padding: 0 0 0 10px;
+      margin: 0;
+    }
     body {
       font-family: sans-serif;
     }
@@ -40,10 +44,15 @@
   </style>
 </head>
 <body>
-
+<a href="https://github.com/grispiapp/screenshot-button-web-component" style=" float: right; "><img loading="lazy" width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_orange_ff7600.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+<br>
 <h1>Screenshot Button<pre style="display: inline; margin-left: 10px;">&lt;screenshot-button&gt;&lt;/screenshot-button&gt;</pre></h1>
 
 <pre>
+  // Add to your page
+
+  &lt;script src="https://grispiapp.github.io/screenshot-button-web-component/screenshot-button.js"&gt;&lt;/script&gt;
+
   // Declarative usage
 
   &lt;screenshot-button&gt;&lt;/screenshot-button&gt;
@@ -114,6 +123,5 @@
 <screenshot-button class="custom-button" style="color: magenta; padding: 5px;" use-computed-style="remove" preview-target=".prev" preview-scale="0.2"></screenshot-button>
 <hr/>
 <img class="prev" src="https://i.imgur.com/F16iJ6p.png" alt="preview"/>
-
 </body>
 </html>
