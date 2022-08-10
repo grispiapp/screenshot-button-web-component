@@ -28,7 +28,6 @@
         this.#useComputedStyle = !!this.attributes.getNamedItem('use-computed-style');
         this.#removeAttributes = this.attributes.getNamedItem('use-computed-style')?.value?.trim().toLowerCase() === 'remove';
         this.#timeout = this.attributes.getNamedItem('timeout')?.value || '500';
-        this.#previewTarget = document.querySelector(this.attributes.getNamedItem('preview-target')?.value);
         this.#previewTargetScale = this.attributes.getNamedItem('preview-scale')?.value || '0.5';
 
         this.attachShadow({ mode: 'open' }).innerHTML = htmlContent;
@@ -48,6 +47,10 @@
             this.removeAttribute('style');
           }
         }
+      }
+
+      connectedCallback() {
+        this.#previewTarget = document.querySelector(this.attributes.getNamedItem('preview-target')?.value);
       }
 
       takeScreenshot() {

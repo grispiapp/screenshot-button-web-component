@@ -1,1 +1,117 @@
-demo
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://grispiapp.github.io/screenshot-button-web-component/screenshot-button.js"></script>
+  <meta charset="utf-8">
+  <title>Screenshot Button Custom Element Web components</title>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+    pre {
+      background-color:#ffffff;font-family:'JetBrains Mono',monospace;font-size:10.5pt;
+      color:#174ad4;
+    }
+    #docTable {
+      border:1px solid #b3adad;
+      border-collapse:collapse;
+      padding:5px;
+    }
+    #docTable th {
+      border:1px solid #b3adad;
+      padding:5px;
+      background: #f0f0f0;
+      color: #313030;
+    }
+    #docTable td {
+      border:1px solid #b3adad;
+      padding:5px;
+      background: #ffffff;
+      color: #313030;
+    }
+    .custom-button {
+      background: #bababa;
+      font-family: monospace;
+      cursor: pointer;
+      border: 1px solid lightcoral;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Screenshot Button<pre style="display: inline; margin-left: 10px;">&lt;screenshot-button&gt;&lt;/screenshot-button&gt;</pre></h1>
+
+<pre>
+  // Declarative usage
+
+  &lt;screenshot-button&gt;&lt;/screenshot-button&gt;
+
+  // Programmatic usage
+
+  const screenshotButton = document.querySelector('screenshot-button');
+  screenshotButton.takeScreenshot()
+    .then( (blob) => imgEl.src = URL.createObjectURL(blob) )
+</pre>
+
+<table id="docTable">
+  <caption>
+    <p>All attributes are optional.</p>
+    <p>Note that the button has a <code>screenshot-button</code> class.</p>
+  </caption>
+  <thead>
+  <tr>
+    <th>Attribute</th>
+    <th>Default</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><pre>text</pre></td>
+    <td>Take screenshot</td>
+    <td>The button's text.</td>
+  </tr>
+  <tr>
+    <td><pre>use-computed-style</pre></td>
+    <td>non-existent</td>
+    <td>
+      Regardless of the value, if this attribute exists computed style of &lt;screenshot-button&gt; is applied to the button.<br><br>
+      If the value is <em>remove</em> then the custom element's class and style attributes are removed after computed style is applied to the button.<br>
+      This is useful when you only want the style on the button but not the enclosing &lt;screenshot-button&gt; tag.
+    </td>
+  </tr>
+  <tr>
+    <td><pre>timeout</pre></td>
+    <td>500</td>
+    <td>Duration in ms that a screenshot is taken after screen capture is started.</td>
+  </tr>
+  <tr>
+    <td><pre>preview-target</pre></td>
+    <td>Empty</td>
+    <td>A query selector that selects an HTMLImageElement (&lt;img&gt; tag)&nbsp;<br></td>
+  </tr>
+  <tr>
+    <td><pre>preview-scale</pre></td>
+    <td>0.5</td>
+    <td>Number to scale the preview target img element. Sets height & width as img attribute.</td>
+  </tr>
+  </tbody>
+</table>
+<h3>Demo</h3>
+<pre>
+  &lt;screenshot-button class="custom-button" style="color: magenta; padding: 5px;" use-computed-style preview-target=".prev" preview-scale="0.2"&gt;&lt;/screenshot-button&gt;
+
+  .custom-button {
+    background: #bababa;
+    font-family: monospace;
+    cursor: pointer;
+    border: 1px solid lightcoral;
+  }
+</pre>
+<br>
+<screenshot-button class="custom-button" style="color: magenta; padding: 5px;" use-computed-style="remove" preview-target=".prev" preview-scale="0.2"></screenshot-button>
+<hr/>
+<img class="prev" src="https://i.imgur.com/F16iJ6p.png" alt="preview"/>
+
+</body>
+</html>
