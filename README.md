@@ -7,7 +7,7 @@ https://grispiapp.github.io/screenshot-button-web-component/
 ```html
 <!--Add to your page-->
 
-<script src="https://grispiapp.github.io/screenshot-button-web-component/screenshot-button.js"></script>
+<script type="module" src="https://grispiapp.github.io/screenshot-button-web-component/screenshot-button.js"></script>
 
 <!--Declarative usage-->
 
